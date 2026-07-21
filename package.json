@@ -1,0 +1,29 @@
+{
+  "name": "@p2ppsr/metanet-apps-overlay-deployment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CARS deployment wrapper for the canonical Metanet Apps overlay topic",
+  "type": "module",
+  "scripts": {
+    "prebuild": "node scripts/clean-build.mjs",
+    "build": "tsc -p backend/tsconfig.json",
+    "test": "vitest run test/apps-adapter.test.ts",
+    "lint": "ts-standard --project tsconfig.json backend/src/**/*.ts test/**/*.ts",
+    "lars": "lars",
+    "cars": "cars",
+    "cars:build": "cars build 1",
+    "cars:deploy": "cars deploy now 1"
+  },
+  "devDependencies": {
+    "@bsv/cars-cli": "1.2.9",
+    "@bsv/lars": "1.5.8",
+    "@bsv/sdk": "2.1.7",
+    "@types/node": "24.10.1",
+    "ts-standard": "12.0.2",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  },
+  "engines": {
+    "node": ">=22 <25"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@p2ppsr/metanet-apps-overlay-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Package adapters for the canonical Metanet Apps overlay topic",
+  "type": "module",
+  "main": "dist/mod.js",
+  "types": "dist/mod.d.ts",
+  "scripts": {
+    "prebuild": "node ../scripts/clean-build.mjs",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@bsv/overlay": "2.2.0",
+    "@bsv/overlay-topics": "1.6.0",
+    "@bsv/sdk": "2.1.7",
+    "mongodb": "7.5.0"
+  },
+  "engines": {
+    "node": ">=22 <25"
+  }
+}
