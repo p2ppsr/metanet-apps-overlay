@@ -17,4 +17,9 @@ RUN /usr/local/bin/node /usr/local/lib/node_modules/npm/bin/npm-cli.js install -
   && rm -rf /app/src \
   && mkdir -p /app/src
 
+# The canonical topics package is ESM-only. Older CARS engine images omitted
+# this marker, causing tsx to compile the adapters through CommonJS `require`.
+RUN /usr/local/bin/node --input-type=module -e \
+  "import fs from 'node:fs'; const path='/app/package.json'; const pkg=JSON.parse(fs.readFileSync(path,'utf8')); pkg.type='module'; fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\\n')"
+
 COPY backend/src/ /app/src/
