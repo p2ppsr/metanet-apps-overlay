@@ -15,8 +15,8 @@
     "cars:deploy": "cars deploy now 1"
   },
   "devDependencies": {
-    "@bsv/cars-cli": "1.2.9",
-    "@bsv/lars": "1.5.8",
+    "@p2ppsr/cars-cli": "1.2.31",
+    "@p2ppsr/lars": "1.5.12",
     "@bsv/sdk": "2.1.7",
     "@types/node": "24.10.1",
     "ts-standard": "12.0.2",

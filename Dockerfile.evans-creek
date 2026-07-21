@@ -1,0 +1,20 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+ARG SOURCE_COMMIT
+LABEL org.opencontainers.image.source="https://github.com/p2ppsr/metanet-apps-overlay" \
+      org.opencontainers.image.revision="${SOURCE_COMMIT}"
+
+WORKDIR /app
+
+# CARS normally performs this assembly. This target exists so Evans Creek can
+# produce the same thin runtime during an operator-managed recovery or cutover.
+RUN npm install --omit=dev --ignore-scripts --no-save \
+      @bsv/overlay-topics@1.6.0 \
+      @bsv/overlay@2.2.0 \
+      @bsv/sdk@2.1.7 \
+      mongodb@7.5.0 \
+  && rm -rf /app/src \
+  && mkdir -p /app/src
+
+COPY backend/src/ /app/src/
